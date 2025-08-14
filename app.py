@@ -21,8 +21,9 @@ from datetime import datetime
 warnings.filterwarnings('ignore')
 
 import tensorflow as tf
-from tensorflow.keras.layers import GRU, Bidirectional, Dense, Dropout, Flatten, LSTM, Conv1D
-model = tf.keras.models.load_model(
+import keras
+from keras.layers import GRU, Bidirectional, Dense, Dropout, Flatten, LSTM, Conv1D
+model = keras.models.load_model(
     'model.h5',
     compile=False,
     custom_objects={
