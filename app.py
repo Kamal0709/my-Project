@@ -20,9 +20,21 @@ from datetime import datetime
 
 warnings.filterwarnings('ignore')
 
-from tensorflow.keras.models import Model, load_model
-model = load_model('model.h5')
-
+import tensorflow as tf
+from tensorflow.keras.layers import GRU, Bidirectional, Dense, Dropout, Flatten, LSTM, Conv1D
+model = tf.keras.models.load_model(
+    'model.h5',
+    compile=False,
+    custom_objects={
+        'GRU': GRU,
+        'Bidirectional': Bidirectional,
+        'Dense': Dense,
+        'Dropout': Dropout,
+        'Flatten': Flatten,
+        'LSTM': LSTM,
+        'Conv1D': Conv1D
+    }
+)
 app = Flask(__name__)
 
 
@@ -115,3 +127,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
